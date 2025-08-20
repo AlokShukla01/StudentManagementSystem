@@ -1,0 +1,935 @@
+#include<iostream>
+#include<string>
+#include<cmath>
+#include<stdlib.h>
+#include<fstream>
+
+using namespace std;
+
+//Function prototypes
+
+void stats();
+void feepayment(int );
+
+//Class that contains student's record
+
+class student {
+
+public:
+    string name;
+    string fname;
+    string mname;
+    string date;
+    string telno;
+    int sclass;
+    char div;
+    int rno;
+    float marks[5];
+    string sec_code;
+    int attct;
+    float per;
+    char grade;
+
+    //DESTRUCTOR
+
+    ~student()
+    {
+
+    }
+};
+
+//This class has all the functions that we need
+
+class functions : public student{
+
+public:
+
+    //FUNCTION TO GENERATE ID CARD
+
+    void id(){
+        ofstream file;
+        file.open("print1.txt");
+        file<<endl<<endl;
+        for(int i=0; i<80; i++)
+        {
+            file<<"-";
+        }
+        file<<endl<<"\n\t\t\t  THE INDIAN NATIONAL SCHOOL\n\n";
+
+        for(int i=0; i<80; i++)
+        {
+            file<<"-";
+        }
+        file<<endl<<"\n\t\t\t\t   STUDENT ID CARD\n";
+        for(int i=0; i<27; i++)
+        {
+            file<<"-+-";
+        }
+        file<<endl<<"\n\t\t\t\t   PERSONAL DETAILS\n";
+        for(int i=0; i<27; i++)
+        {
+            file<<"-+-";
+        }
+
+        file<<"\nNAME: "<<name<<"\t\t";
+        file<<"CLASS: "<<sclass<<"\t";
+        file<<"DIV: "<<div<<"\t\t";
+        file<<"ROLL NO: "<<rno<<"\n\n";
+       file<<"FATHERS NAME: Mr.  "<<fname<<"\t\t\t";
+        file<<"MOTHERS NAME: Mrs.  "<<mname<<"\n\n";
+        file<<"DATE OF BIRTH: "<<date<<"\t\t\t";
+        file<<"TELEPHONE: "<<telno<<"\n\n";
+
+        file<<endl<<endl;
+
+        for(int i=0; i<27; i++)
+        {
+            file<<"-+-";
+        }
+        file.close();
+       system("notepad /p print1.txt");
+    }
+
+
+    //FUNCTION TO GET PERCENTAGE
+
+    void getper()
+    {
+        per=(marks[0]+marks[1]+marks[2]+marks[3]+marks[4])/5;
+
+    }
+
+    //FUNCTION TO GET GRADE
+
+    void getgrade()
+    {
+        if(per>=80)
+            grade='A';
+        else if((per>=60)&&(per<=79))
+            grade='B';
+        else if((per>=40)&&(per<=59))
+            grade='C';
+        else if((per>=35)&&(per<=39))
+            grade='D';
+        else if(per<35)
+            grade='E';
+
+    }
+
+    //FUNCTION TO GET INPUT FROM USER
+
+
+    void enter()
+    {
+
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+        cout<<"\n\t\t\t\t\t   ENTER THE STUDENT DETAILS"<<endl<<endl;
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+        cout<<"\n\t\tNAME OF THE STUDENT    : ";
+        cin>>name;
+        cout<<"\t\tFATHER'S NAME          : ";
+        cin>>fname;
+        cout<<"\t\tMOTHER'S NAME          : ";
+        cin>>mname;
+        cout<<"\t\tDATE OF BIRTH(DD/MM/YY): ";
+        cin>>date;
+        cout<<"\t\tTELEPHONE NUMBER       : ";
+        cin>>telno;
+        cout<<"\t\tSECURITY CODE          : ";
+        cin>>sec_code;
+        cout<<"\t\tCLASS                  : ";
+        cin>>sclass;
+        cout<<"\t\tDIVISION               : ";
+        cin>>div;
+        cout<<"\t\tROLL NUMBER            : ";
+        cin>>rno;
+        cout<<"\t\tDAYS PRESENT           : ";
+        cin>>attct;
+
+        cout<<endl<<endl;
+        for(int i=0; i<40; i++)
+        {
+            cout<<"+-+";
+        }
+        cout<<"\n\t\t\t\t\t   ENTER THE SUBJECT MARKS"<<endl;
+        for(int i=0; i<40; i++)
+        {
+            cout<<"+-+";
+        }
+        cout<<"\n\t\t\t       PHYSICS    : ";
+        cin>>marks[0];
+        cout<<"\t\t\t       CHEMISTRY  : ";
+        cin>>marks[1];
+        cout<<"\t\t\t       MATHEMATICS: ";
+        cin>>marks[2];
+        cout<<"\t\t\t       COMPUTER   : ";
+        cin>>marks[3];
+        cout<<"\t\t\t       ENGLISH    : ";
+        cin>>marks[4];
+    }
+
+    //FUNCTION TO DISPLAY ALL THE ATTRIBUTES
+
+    void display()
+    {
+        cout<<endl;
+        cout<<endl<<"1.NAME";
+        cout<<endl<<"2.FATHER'S NAME";
+        cout<<endl<<"3.MOTHER'S NAME";
+        cout<<endl<<"4.DATE OF BIRTH";
+        cout<<endl<<"5.TELEPHONE NUMBER";
+        cout<<endl<<"6.SECURITY CODE";
+        cout<<endl<<"7.CLASS";
+        cout<<endl<<"8.DIVISION";
+        cout<<endl<<"9.ROLL NO.";
+        cout<<endl<<"10.ATTENDANCE";
+    }
+
+    //FUNCTION TO DISPLAY REPORT CARD OF STUDENT
+
+    void display_report()
+    {
+
+        cout<<endl<<endl;
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-";
+        }
+        cout<<endl<<"\t\t\t\t\t   THE INDIAN NATIONAL SCHOOL\n\n";
+
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-";
+        }
+        cout<<endl<<"\t\t\t\t\t   STUDENT REPORT CARD\n";
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+        cout<<endl<<"\t\t\t\t\t   PERSONAL DETAILS\n";
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+
+        cout<<"\nNAME: "<<name<<"\t\t";
+        cout<<"CLASS: "<<sclass<<"\t";
+        cout<<"DIV: "<<div<<"\t\t";
+        cout<<"ROLL NO: "<<rno<<"\n\n";
+        cout<<"DATE OF BIRTH: "<<date<<"\t\t\t";
+        cout<<"TELEPHONE: "<<telno<<"\n\n";
+        cout<<"FATHERS NAME: Mr.  "<<fname<<"\t\t\t";
+        cout<<"MOTHERS NAME: Mrs.  "<<mname<<"\n\n";
+        cout<<endl<<endl;
+
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+        cout<<endl<<"\t\t\t\t   ACADEMIC PERFORMANCE\n";
+
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+        cout<<endl<<"\t\t\t\t   MARKS\n";
+
+        cout<<"\t\t\t  PHYSICS\t"<<marks[0]<<"\n";
+        cout<<"\t\t\t  CHEMISTRY\t"<<marks[1]<<"\n";
+        cout<<"\t\t\t  MATHS\t\t"<<marks[2]<<"\n";
+        cout<<"\t\t\t  COMPUTER\t"<<marks[3]<<"\n";
+        cout<<"\t\t\t  ENGLISH\t"<<marks[4]<<"\n";
+
+
+        cout<<endl<<endl<<"\t\t\t\t   PERCENTAGE: ";
+        cout<<per;
+        cout<<"  %";
+        cout<<"\t\tGRADE: ";
+        cout<<grade;
+        cout<<endl;
+    }
+
+    //FUNCTION TO DISPLAY INFORMATION TO TEACHER
+
+    void display_all()
+    {
+        cout<<"\t\tNAME: "<<name<<endl;
+        cout<<"\t\tFATHER: Mr. "<<fname<<endl<<"\t\t"<<"MOTHER: Mrs."<<mname<<endl<<endl;
+        cout<<"\t\tROLL NO: "<<rno<<"\t"<<"SECURE CODE: "<<sec_code<<endl;
+        cout<<"\t\tCLASS: "<<sclass<<" "<<div<<"\t";
+        cout<<"\t\tTELEPHONE NO: "<<telno<<endl<<endl;
+        cout<<"\t\t                     MARKS"<<endl;
+        cout<<"\t\tPHY\tCHEM\tMATHS\tBIO/COMP\tENG"<<endl;
+        cout<<"\t\t"<<marks[0]<<"\t"<<marks[1]<<"\t"<<marks[2]<<"\t";
+        cout<<marks[3]<<"\t\t"<<marks[4]<<"\n\n";
+        cout<<"\t\tPERCENTAGE: "<<per<<"%\t\t"<<"GRADE: "<<grade<<endl;
+        cout<<"\t\tATTENDANCE: "<<attct<<" %";
+
+    }
+
+    //FUNCTION TO PRINT THE REPORT CARD
+
+    void print_report(){
+        ofstream file;
+        file.open("print.txt");
+        file << "\t\t\t   THE INDIAN NATIONAL SCHOOL" << endl;
+        file << "\t\t\t\t   REPORT CARD"<<endl<<endl<<endl;
+        file << "\tNAME : "<<name<<endl;
+        file << "\tROLL NO: " << rno<<endl;
+        file << "\tCLASS: "<<sclass<<" "<<div<<endl<<endl<<endl;
+        file << "\tYOUR MARKS ARE AS FOLLOWS:" << endl<<endl;
+        file<<"\tPHYSICS : "<<marks[0]<<endl<<"\tCHEMISTRY : "<<marks[1]<<endl<<"\tMATHS : "<<marks[2]<<endl<<"\tCOMPUTER : "<<marks[3]<<endl<<"\tENGLISH : "<<marks[4]<<endl<<endl<<endl;
+        file << "\tRESULT : " << endl<<endl;
+        file<<"\tPERCENTAGE: "<<per<<"%"<<endl<<"\tGRADE: "<<grade<<endl<<endl<<endl;
+        file << "-----------------------------------------------------------------------------------";
+        file.close();
+        system("notepad /p print.txt");
+    }
+
+
+} obj1[40];
+
+//Main function
+
+int main () {
+
+    int a,c,d,e,f,g,h,j,l,m,n,o;
+    int k=50;
+    int z1,z2,z3,z4,z5,z6,z7,z8;
+    string b,p;
+
+    a2:
+
+    //MAIN MENU
+
+    cout<<endl<<endl;
+    cout<<"\t\t\t\t\t\t   MAIN MENU";
+    cout<<endl<<endl<<"\t\t\t\t\t      SELECT DESIGNATION";
+    cout<<endl<<endl;
+    cout<<"\t\t\t\t    1. TEACHER\t2. STUDENT\t3. PUBLIC";
+    cout<<endl<<endl<<"\t\t\t\t\t\t(PRESS 4 TO EXIT)";
+    cout<<endl<<endl<<"\t\t\t\t\tSELECT AN OPTION:  ";
+    cin>>a;
+
+    //EXCEPTION HANDLING FOR MAIN MENU
+
+    if((a>='A'&&a<='Z')||(a>='a'&&a<='z'))
+    {
+        cout<<endl<<"INVALID INPUT,INPUT SHOULD BE INTEGER ONLY BETWEEN 1-4 ";
+        goto a2;
+    }
+
+    //Switch case
+
+    switch (a)
+    {
+    case 1:
+a1:
+        {
+    //PASSWORD AUTHORIZATION
+            cout<<endl<<"ENTER PASSWORD: ";
+            cin>>b;
+            if(b=="ABCDEF")
+            {
+                cout<<endl<<"ACCESS GRANTED";
+            }
+            else
+            {
+                cout<<endl<<"TRY AGAIN  :(";
+                goto a1;
+            }
+
+            a3:
+
+            //SUB MENU FOR TEACHER TO PERFORM VARIOUS TASKS
+
+            cout<<endl<<endl<<"\t\t\t\t\t\t  MENU";
+            cout<<endl<<endl<<"\t\t\t\t\t1.ADD A NEW RECORD";
+            cout<<endl<<"\t\t\t\t\t2.SEARCH FOR A RECORD";
+            cout<<endl<<"\t\t\t\t\t3.MODIFY A RECORD";
+            cout<<endl<<"\t\t\t\t\t4.DISPLAY NAMES OF ALL THE STUDENTS ENROLLED IN SCHOOL";
+            cout<<endl<<"\t\t\t\t\t5.DISPLAY ALL THE RECORDS";
+            cout<<endl<<"\t\t\t\t\t6.CLASS STATISTICS";
+            cout<<endl<<"\t\t\t\t\t7.GO TO MAIN MENU";
+            cout<<endl<<endl<<"\t\t\t\t   ENTER YOUR OPTION: ";
+            cin>>c;
+
+            switch(c)
+            {
+
+//CASE 1 TO HELP TEACHER TO ADD DETAILS OF STUDENTS
+
+            case 1:
+            {
+
+                cout<<"HOW MANY RECORDS YOU WANT TO ADD? ";
+                cin>>f;
+                for(int i=0; i<f; i++)
+                {
+
+                    obj1[i].enter();
+                    obj1[i].getper();
+                    obj1[i].getgrade();
+
+//EXCEPTION HANDLING
+                    if(obj1[i].telno.size()!=10)
+                    {
+                        cout<<endl<<"INVALID INPUT,TELEPHONE NUMBER SHOULD OF LENGTH 10 ONLY :(";
+                        goto a3;
+                    }
+
+                    else if(!(obj1[i].div>='a'&&obj1[i].div<='z'||obj1[i].div>='A'&&obj1[i].div<='Z'))
+                    {
+
+                        cout<<endl<<"INVALID INPUT,DIVISION  SHOULD BE A SINGLE CHARACTER ONLY :(";
+                        goto a3;
+                    }
+
+
+                    else if(!(obj1[i].sclass>=1&&obj1[i].sclass<=12))
+                    {
+                        cout<<endl<<"INVALID INPUT,CLASS SHOULD BE BETWEEN 1-12 ONLY :(";
+                        goto a3;
+                    }
+                    else if(!(obj1[i].rno>=1&&obj1[i].rno<=40))
+                    {
+                        cout<<endl<<"INVALID INPUT,ROLL NUMBER SHOULD BE BETWEEN 1-40 ONLY :(";
+                        goto a3;
+                    }
+
+                    else if(!(obj1[i].attct<=100))
+                    {
+                        cout<<endl<<"INVALID INPUT,ATTENDANCE SHOULD BE LESS THAN OR EQUAL TO 100 ONLY :(";
+                        goto a3;
+                    }
+                    else if(obj1[i].sec_code.size()!=4)
+                    {
+                        cout<<endl<<"INVALID INPUT,SECURITY CODE SHOULD BE OF LENGTH 4 ONLY :(";
+                        goto a3;
+                    }
+                    else if(!(obj1[i].marks[0]<=100&&obj1[i].marks[1]<=100&&obj1[i].marks[2]<=100&&obj1[i].marks[3]<=100&&obj1[i].marks[4]<=100))
+                    {
+                        cout<<endl<<"INVALID INPUT,MARKS CANNOT BE GREATER THAN 100 :(";
+                        goto a3;
+                    }
+                    else if(!(obj1[i].date[2]=='/'&&obj1[i].date[5]=='/'))
+                    {
+                        cout<<endl<<"INVALID INPUT,DATE SHOULD BE IN PROPER FORMAT i.e DD/MM/YYYY (NUMERIC ONLY)  :(";
+                        goto a3;
+                    }
+
+
+                }
+
+                cout<<endl<<"\t-->  RECORD SUCESSFULLY ADDED!"<<endl<<endl;
+                goto a3;
+
+
+            }
+
+//CASE 2 TO HELP USER SEARCH FOR STUDENT RECORD
+
+            case 2:
+
+
+            {
+                cout<<endl<<"ENTER THE ROLL NO. TO BE SEARCHED: ";
+                cin>>g;
+
+                for(int i=0; i<f; i++)
+                {
+                    if(obj1[i].rno==g)
+                    {
+                        obj1[i].display_all();
+                        goto a3;
+                    }
+
+
+                }
+
+                cout<<endl<<"SORRY, NO SUCH RECORD FOUND :(";
+                goto a3;
+            }
+
+
+//CASE 3 TO HELP USER MODIFY PRE EXISTING RECORD
+
+            case 3:
+            {
+                cout<<endl<<"ENTER THE ROLL NO. OF THE STUDENT WHOSE RECORD IS TO BE MODIFIED: ";
+                cin>>h;
+                for(int i=0; i<40; i++)
+                {
+                    if(obj1[i].rno==h)
+                    {
+                        k=i;
+                    }
+
+                }
+
+                if(k==50)
+                {
+                    cout<<endl<<"SORRY, NO SUCH RECORD FOUND :(";
+                    goto a3;
+                }
+
+                else if(k!=50)
+                {
+                    obj1[k].display_all();
+                    cout<<endl;
+                    obj1[k].enter();
+                    cout<<endl<<"RECORD SUCCESSFULLY MODEFIED";
+                    goto a3;
+                }
+
+
+            }
+//CASE 4 TO DISPLAY NAMES OF STUDENTS ENROLLED IN YOUR SCHOOL
+
+            case 4:
+            {
+
+                cout<<endl<<"   NAME:-\t\t CLASS:-\n";
+                for(int i=0; i<40; i++)
+                {
+                    if(obj1[i].sclass!=0)
+                    {
+                        cout<<endl<<i+1<<". "<<obj1[i].name;
+                        cout<<"\t\tCLASS: "<<obj1[i].sclass;
+                    }
+
+                }
+                break;
+
+            }
+
+//CASE 5 TO DISPLAY ALL EXISTING RECORDS
+
+            case 5:
+            {
+                cout<<endl<<endl;
+                for(int i=0; i<f; i++)
+                {
+                    obj1[i].display_all();
+                    cout<<endl<<endl<<endl;
+                }
+                if(f==0)
+                {
+                    cout<<endl<<"SORRY, NO DATA FOUND :(";
+                }
+
+                goto a3;
+            }
+
+//CASE 6 TO DISPLAY CLASS STATISTICS
+
+            case 6:
+            {
+                stats();
+                goto a3;
+
+            }
+
+//CASE 7 TO GO TO MAIN MENU
+
+            case 7:
+            {
+                goto a2;
+            }
+            default:
+            {
+                cout<<endl<<"WRONG INPUT,INPUT SHOULD BE BETWEEN 1-7 ONLY :(";
+                goto a3;
+            }
+            }
+
+        }
+
+//CASE 2 OF SWITCH 1 TO DISPLAY MAIN MENU FOR STUDENT
+
+    case 2:
+    {
+
+a5:
+        cout<<endl<<endl<<"\t\t\t\t\t\t  MENU";
+        cout<<endl<<endl<<"\t\t\t\t\t1.SEARCH FOR YOUR RECORDS";
+        cout<<endl<<"\t\t\t\t\t2.VIEW CLASS STATISTICS";
+        cout<<endl<<"\t\t\t\t\t3.PAY YOUR ACADEMIC FEE";
+        cout<<endl<<"\t\t\t\t\t4.GET YOUR ID CARD";
+        cout<<endl<<"\t\t\t\t\t5.PRINT YOUR REPORT CARD";
+        cout<<endl<<"\t\t\t\t\t6.GO TO MAIN MENU";
+        cout<<endl<<endl<<"\t\t\t\t   ENTER YOUR OPTION: ";
+        cin>>d;
+
+        switch(d)
+        {
+
+// CASE 1 TO SEARCH FOR STUDENT RECORD
+
+        case 1:
+        {
+            cout<<endl<<endl;
+            cout<<"ENTER YOUR ROLL NO.: ";
+            cin>>n;
+
+            cout<<"ENTER YOUR SECURITY CODE: ";
+            cin>>p;
+
+            cout<<"ENTER YOUR CLASS: ";
+            cin>>o;
+
+            for(int i=0; i<40; i++)
+            {
+                if(obj1[i].rno==n&&obj1[i].sclass==o&&obj1[i].sec_code==p)
+                {
+                    obj1[i].display_report();
+                    goto a5;
+
+                }
+            }
+
+            cout<<endl<<endl<<"SORRY,NO SUCH RECORD FOUND :(";
+            goto a5;
+
+        }
+
+//CASE 2 TO DISPLAY CLASS STATISTICS
+
+        case 2:
+        {
+            stats();
+            goto a5;
+        }
+
+//CASE 3 TO PAY YOUR ACADEMIC FEE
+
+        case 3:
+        {
+
+            cout<<endl<<endl;
+            cout<<"ENTER YOUR ROLL NO.: ";
+            cin>>n;
+
+            cout<<"ENTER YOUR SECURITY CODE: ";
+            cin>>p;
+
+            cout<<"ENTER YOUR CLASS: ";
+            cin>>o;
+
+            for(int i=0; i<40; i++)
+            {
+                if(obj1[i].rno==n&&obj1[i].sclass==o&&obj1[i].sec_code==p)
+                {
+                    feepayment(o*5000);
+                    goto a5;
+
+                }
+            }
+
+
+            cout<<endl<<"SORRY, NO SUCH RECORD FOUND :(";
+            goto a5;
+
+        }
+
+// CASE 4 TO GENERATE THE ID CARD OF THE STUDENT
+
+       case 4 :
+       {
+        cout<<endl<<endl;
+            cout<<"ENTER YOUR ROLL NO.: ";
+            cin>>n;
+
+            cout<<"ENTER YOUR SECURITY CODE: ";
+            cin>>p;
+
+            cout<<"ENTER YOUR CLASS: ";
+            cin>>o;
+
+            for(int i=0; i<40; i++)
+            {
+                if(obj1[i].rno==n&&obj1[i].sclass==o&&obj1[i].sec_code==p)
+                {
+                    obj1[i].id();
+                    goto a5;
+
+                }
+            }
+
+            cout<<endl<<endl<<"SORRY,NO SUCH RECORD FOUND :(";
+            goto a5;
+
+        }
+
+// CASE 5 TO PRINT THE REPORT CARD OF THE STUDENT
+
+        case 5 :
+        {
+            cout<<endl<<endl;
+            cout<<"ENTER YOUR ROLL NO.: ";
+            cin>>n;
+
+            cout<<"ENTER YOUR SECURITY CODE: ";
+            cin>>p;
+
+            cout<<"ENTER YOUR CLASS: ";
+            cin>>o;
+
+            for(int i=0; i<40; i++)
+            {
+                if(obj1[i].rno==n&&obj1[i].sclass==o&&obj1[i].sec_code==p)
+                {
+                    obj1[i].print_report();
+                    goto a5;
+
+                }
+            }
+
+            cout<<endl<<endl<<"SORRY,NO SUCH RECORD FOUND :(";
+            goto a5;
+
+        }
+
+//CASE 6 TO GO TO SUB MENU OF STUDENT
+
+        case 6:
+        {
+            goto a2;
+        }
+
+// DEFAULT CASE OF SWITCH 2 OF STUDENT TO HANDLE INVALID INPUT
+        default:
+        {
+            cout<<endl<<"WRONG INPUT,INPUT SHOULD BE BETWEEN 1-6 ONLY :(";
+            goto a5;
+        }
+        }
+
+    }
+
+//CASE 3 OF SWITCH 1 TO DISPLAY MAIN MENU OF PUBLIC
+
+    case 3:
+    {
+
+a6:
+        cout<<endl<<endl<<"\t\t\t\t\t\t  MENU";
+        cout<<endl<<endl<<"\t\t\t\t\t1.VIEW CLASS STATISTICS";
+        cout<<endl<<"\t\t\t\t\t2.GO TO MAIN MENU";
+        cout<<endl<<endl<<"\t\t\t\t   ENTER YOUR OPTION: ";
+        cin>>e;
+
+        switch(e)
+        {
+//CASE 1 TO DISPLAY CLASS STATISTICS
+
+        case 1:
+        {
+            stats();
+            goto a6;
+        }
+
+//CASE 2 TO GO TO MAIN MENU
+
+        case 2:
+        {
+            goto a2;
+        }
+
+//DEFAULT CASE OF PUBLIC SWITCH TO HANDLE INVALID INPUT
+
+        default:
+        {
+            cout<<endl<<"WRONG INPUT,INPUT SHOULD BE BETWEEN 1-2 ONLY :(";
+            goto a6;
+        }
+
+        }
+
+
+    }
+
+//CASE 4 OF SWITCH 1 TO EXIT PROGRAM
+
+    case 4:
+    {
+        exit(0);
+    }
+
+//DEFAULT CASE TO HANDLE WRONG INPUT IN SWITCH 1
+
+    default:
+    {
+        cout<<endl<<"WRONG INPUT,INPUT SHOULD BE BETWEEN 1-4 ONLY :(";
+        goto a2;
+    }
+
+    }
+
+}
+//FUNCTION TO DISPLAY CLASS STATISTICS
+
+void stats()
+{
+
+    cout<<endl<<endl<<endl;
+    cout<<"\t\t\t\t\t     STATISTICS";
+    for(int i=0; i<5; i++)
+    {
+        int count=0;
+        float avgmarks=0;
+        for(int z=0; z<10; z++)
+        {
+
+            if(obj1[z].marks[i]!=0)
+            {
+                avgmarks+=obj1[z].marks[i];
+                count++;
+            }
+
+
+        }
+
+        cout<<endl<<endl<<"AVERAGE MARKS OF SUBJECT "<<i+1<<" =";
+        cout<<avgmarks/count;
+
+
+    }
+
+    cout<<endl<<endl<<endl;
+    cout<<"ABBRIVATIONS USED: ";
+    cout<<endl<<"1=PHYSICS\n2=CHEMISTRY\n3=MATHEMATICS\n4=COMPUTER\n5=ENGLISH";
+
+}
+
+//FUNCTION FOR PAYMENT PORTAL TO ACCEPT ACADEMIC FEES
+
+void feepayment(int cost)
+{
+    int z,otp,pin;
+    string expiry,crdholder,upi,cardno,cvv;
+
+    for(int i=0; i<40; i++)
+    {
+        cout<<"-+-";
+    }
+    cout<<"\t\t\t\t\t    WELCOME TO OUR PAYMENT GATEWAY"<<endl;
+
+    for(int i=0; i<40; i++)
+    {
+        cout<<"-+-";
+    }
+
+    cout<<"\t\t\t\t\t    TOTAL ACADEMIC FEES= Rs. "<<cost<<endl;
+z1:
+
+    cout<<endl<<endl<<"\t\t HOW WOULD YOU LIKE TO PAY?";
+    cout<<endl<<"\t\t 1.CARD";
+    cout<<endl<<"\t\t 2.UPI";
+
+    cout<<endl<<endl<<"\tPLEASE SELECT YOUR OPTION: ";
+    cin>>z;
+
+    switch(z)
+    {
+    case 1:
+    {
+a9:
+        cout<<endl<<endl<<"\tYOU HAVE CHOOSEN PAYMENT BY CARD METHOD. ";
+        cout<<endl<<endl<<"\tPLEASE ENTER YOUR CARD DETAILS:- ";
+        cout<<endl<<endl<<"\t\tCARD NUMBER: ";
+ try{
+        cin>>cardno;
+        if(cardno.size()!=16)
+        {
+
+            if((cardno[0]>='a'&&cardno[0]<='z')||(cardno[0]>='A'&&cardno[0]<='Z'))
+            {
+                 throw 10;
+            }
+
+        }
+   }
+        catch(int z9)
+        {
+            cout<<endl<<"INVALID INPUT,INPUT SHOULD BE 16 INTEGER VALUES ONLY ";
+            goto a9;
+        }
+
+
+    try{
+
+        cout<<endl<<endl<<"\t\tCVV: ";
+        cin>>cvv;
+
+         if(cvv.size()!=3)
+        {
+
+            if((cvv[0]>='a'&&cvv[0]<='z')||(cvv[0]>='A'&&cvv[0]<='Z'))
+            {
+                 throw 4.1;
+            }
+
+        }
+       }
+       catch(double z10)
+        {
+            cout<<endl<<"INVALID INPUT,CVV SHOULD BE OF 3 INTEGER VALUES ONLY ";
+            goto a9;
+        }
+
+
+        cout<<endl<<endl<<"\t\tEXPIRY DATE: ";
+        cin>>expiry;
+        cout<<endl<<endl<<"\t\tCARD HOLDER NAME: ";
+        cin>>crdholder;
+
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+        cout<<"\t\t\t\t\t       PAYMENT SUCCESSFULL"<<endl;
+
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+
+        break;
+
+    }
+
+    case 2:
+    {
+        cout<<endl<<endl<<"\tYOU HAVE CHOOSEN PAYMENT BY UPI METHOD. ";
+        cout<<endl<<endl<<"\tPLEASE ENTER YOUR UPI ID: ";
+        cin>>upi;
+        cout<<endl<<endl<<"\tPLEASE ENTER YOUR UPI PIN: ";
+        cin>>pin;
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+        cout<<"\t\t\t\t\t       PAYMENT SUCCESSFULL"<<endl;
+
+        for(int i=0; i<40; i++)
+        {
+            cout<<"-+-";
+        }
+
+        break;
+    }
+    default:
+    {
+        cout<<endl<<endl<<"\t\tINVALID INPUT\n\t\tINPUT SHOULD BE BETWEEN 1-2 ONLY";
+        goto z1;
+    }
+    }
+
+}
